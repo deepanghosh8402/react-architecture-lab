@@ -1,0 +1,14 @@
+
+.flex-container {
+  display: flex; /* Activates flexbox on the parent */
+}
+
+.container1, .container2 {
+  flex: 1; /* Makes both child divs grow equally to fill the space */
+  border: 1px solid #ccc;
+   padding: 2em;
+}
+
+.container1 {
+  margin-right: 10px; /* Adds space between the divs */
+}
