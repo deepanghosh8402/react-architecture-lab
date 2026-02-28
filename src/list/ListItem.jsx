@@ -1,18 +1,25 @@
 import React from 'react'
 import './ListItem.css'
+import Label from './Label'
 
-export default function ListItem() {
+export default function ListItem(props) {
+    const {
+           title,
+           descr,
+           isActive 
+    }=props;
   return (
      <div className="list-item">
         <div className="list-title">
-          <h4>Titile</h4>
+          <h4>{title}</h4>
           <label>Delete</label>
         </div>
         <div className="list-descr">
-          Discription
+          {descr}
         </div>
+
         <div className="list-label">
-          <label>Label Active</label>
+          <Label isActive={isActive}/>
         </div>
       </div>
   )
