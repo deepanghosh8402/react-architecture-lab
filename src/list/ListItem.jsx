@@ -6,10 +6,11 @@ export default function ListItem(props) {
     const {
            title,
            descr,
-           isActive 
+           isActive,
+           id 
     }=props;
   return (
-     <div className="list-item">
+     <div className="list-item" >
         <div className="list-title">
           <h4>{title}</h4>
           <label>Delete</label>
