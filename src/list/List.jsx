@@ -26,32 +26,49 @@ export default class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: arr
+            data: arr,
+            activeState: 'all'
         }
     }
 
     onListChanged = (eve) => {
         const selectedValue = eve.target.value
-        const newList = arr.filter((iteam) => {
-            if ('all' === selectedValue)
+        this.setState({
+            activeState: selectedValue
+        });
+    }
+
+    onDelete = (id) => {
+        const newList = this.state.data.filter((iteam) => iteam.id !== id)
+        this.setState({ data: newList })
+    }
+    render() {
+        const {
+            data,
+            activeState
+        } = this.state;
+
+        const newList = data.filter((iteam) => {
+            if ('all' === activeState)
                 return true
-            if ('active' === selectedValue)
+            if ('active' === activeState)
                 return iteam.isActive === true
-            if ('non-active' === selectedValue)
+            if ('non-active' === activeState)
                 return iteam.isActive === false
             return false
         })
-        this.setState({
-            data: newList
-        });
-    }
-    render() {
         return (
+
             <Tools onAction={this.onListChanged}>
                 <div>
                     {
-                        this.state.data.map((iteam) => {
-                            return <ListItem key={iteam.id} title={iteam.title} descr={iteam.descr} isActive={iteam.isActive} />
+                        newList.map((iteam) => {
+                            return <ListItem
+                                key={iteam.id}
+                                title={iteam.title}
+                                descr={iteam.descr}
+                                isActive={iteam.isActive}
+                                onDelete={() => this.onDelete(iteam.id)} />
                         })
                     }
                 </div>
