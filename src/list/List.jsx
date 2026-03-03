@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ListItem from './ListItem'
 import Tools from './Tools';
+import SimpleList from './SimpleList';
 
 const arr = [
     {
@@ -42,6 +42,10 @@ export default class List extends Component {
         const newList = this.state.data.filter((iteam) => iteam.id !== id)
         this.setState({ data: newList })
     }
+    onLabelChange=(newStatus)=>{
+        console.log(newStatus)
+         this.setState({ activeState: newStatus })
+    }
     render() {
         const {
             data,
@@ -59,19 +63,8 @@ export default class List extends Component {
         })
         return (
 
-            <Tools onAction={this.onListChanged}>
-                <div>
-                    {
-                        newList.map((iteam) => {
-                            return <ListItem
-                                key={iteam.id}
-                                title={iteam.title}
-                                descr={iteam.descr}
-                                isActive={iteam.isActive}
-                                onDelete={() => this.onDelete(iteam.id)} />
-                        })
-                    }
-                </div>
+            <Tools onAction={this.onListChanged} labelValue={activeState}>
+                <SimpleList onLabelChange={this.onLabelChange} newList={newList} onDelete={this.onDelete} />
             </Tools>
         );
     }

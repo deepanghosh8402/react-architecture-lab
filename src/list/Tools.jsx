@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 
 export default class Tools extends Component {
     render() {
-        const { children,onAction } = this.props
+        const { children,onAction, labelValue } = this.props
         const onlyChild = React.Children.only(children)
         const count = React.Children.count(onlyChild.props.children)
-        console.log(onAction)
         return (
             <div>
                 <div className='list-header'>
-                    <select name="status" onChange={onAction}>
+                    <select value={labelValue} name="status" onChange={onAction} >
                         <option value="all">All</option>
                         <option value="active">Active</option>
                         <option value="non-active">Non Active</option>

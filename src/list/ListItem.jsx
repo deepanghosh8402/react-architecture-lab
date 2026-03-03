@@ -8,7 +8,8 @@ export default function ListItem(props) {
     descr,
     isActive,
     id,
-    onDelete
+    onDelete,
+    onLabelChange
   } = props;
   return (
     <div className="list-item" >
@@ -19,9 +20,8 @@ export default function ListItem(props) {
       <div className="list-descr">
         {descr}
       </div>
-
       <div className="list-label">
-        <Label isActive={isActive} />
+        <Label isActive={isActive} onLabelChange={onLabelChange} />
       </div>
     </div>
   )
