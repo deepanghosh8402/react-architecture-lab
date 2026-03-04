@@ -1,13 +1,15 @@
 import React from 'react'
 import './Header.css'
 
-export default function Header() {
+export default function Header(props) {
+    const{selectedPage}=props
+    
     return (
         <div className="app-header">
             <span className="header-title">React Archit </span>
-            <span className="header-menu">Home </span>
-            <span className="header-menu">Usage </span>
-            <span className="header-menu">Settings </span>
+            <span className="header-menu"  onClick={()=>{selectedPage('Home')}}>Home </span>
+            <span className="header-menu"  onClick={()=>{selectedPage('Products')}}>Products </span>
+            <span className="header-menu" onClick={()=>{selectedPage('Setting')}}>Settings </span>
             <span className="header-menu">logout </span>
         </div>
     )
