@@ -22,12 +22,14 @@ const arr = [
         isActive: false
     },
 ]
+const MyContext = React.createContext();
 export default class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: arr,
-            activeState: 'all'
+            activeState: 'all',
+            showLabel: true
         }
     }
 
@@ -42,14 +44,17 @@ export default class List extends Component {
         const newList = this.state.data.filter((iteam) => iteam.id !== id)
         this.setState({ data: newList })
     }
-    onLabelChange=(newStatus)=>{
-        console.log(newStatus)
-         this.setState({ activeState: newStatus })
+    onLabelChange = (newStatus) => {
+        this.setState({ activeState: newStatus })
+    }
+    handleChange = (event) => {
+        this.setState({ showLabel: event.target.checked })
     }
     render() {
         const {
             data,
-            activeState
+            activeState,
+            showLabel,
         } = this.state;
 
         const newList = data.filter((iteam) => {
@@ -62,10 +67,18 @@ export default class List extends Component {
             return false
         })
         return (
-
-            <Tools onAction={this.onListChanged} labelValue={activeState}>
-                <SimpleList onLabelChange={this.onLabelChange} newList={newList} onDelete={this.onDelete} />
-            </Tools>
+            <div>
+                <div>
+                    <input onChange={this.handleChange} checked={this.state.showLabel} type='checkbox'></input>
+                </div>
+                <MyContext.Provider value={this.state.showLabel}>
+                    <Tools onAction={this.onListChanged} labelValue={activeState}>
+                        <SimpleList onLabelChange={this.onLabelChange} newList={newList} onDelete={this.onDelete} />
+                    </Tools>
+                </MyContext.Provider>
+            </div>
         );
     }
 }
+
+export { MyContext };

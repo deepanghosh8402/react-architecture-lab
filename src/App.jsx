@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import ListItem from './list/ListItem'
 import BottomSamples from './components/BottomSamples'
 import List from './list/List'
+import Usage from './pages/usage'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <List />
       {/* <BottomSamples /> */}
+      {/* <Usage/> */}
       <Footer />
     </>
   )
