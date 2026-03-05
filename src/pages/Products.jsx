@@ -1,20 +1,25 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useRef, useEffect } from 'react'
 import productsData from '../data/products.json'
 import ProductList from '../components/ProductList'
 
 export default function Products() {
     const [filterQuery, setFilterQuery] = useState("")
     const [count, setCount] = useState(0)
+    const searchRef = useRef(null)
     // useCallback prevents new function creation on every render
     const handleInputChange = useCallback((e) => {
         setFilterQuery(e.target.value);
     }, []);
+    useEffect(() => {
+        searchRef.current.focus()
+    }, [])
 
     return (
 
         <div style={{ padding: "20px" }}>
             <h2>Product Page useMemo & useCallback Demo</h2>
             <input
+                ref={searchRef}
                 type="text"
                 placeholder="Search product..."
                 value={filterQuery}

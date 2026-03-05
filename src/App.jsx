@@ -8,6 +8,7 @@ import { useState } from 'react'
 import HomePage from './pages/HomePage'
 import Setting from './pages/Setting'
 import Products from './pages/Products'
+import Reducer from './pages/Reducer'
 
 function App() {
   
@@ -21,6 +22,7 @@ const renderContent = (type) => {
   switch (type) {
     case "Setting": return <Setting />;
     case "Products": return <Products/>
+    case "Reducer": return <Reducer/>
     default: return <HomePage />;
   }
 };

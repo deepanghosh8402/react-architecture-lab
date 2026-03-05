@@ -10,6 +10,7 @@ export default function Header(props) {
             <span className="header-menu"  onClick={()=>{selectedPage('Home')}}>Home </span>
             <span className="header-menu"  onClick={()=>{selectedPage('Products')}}>Products </span>
             <span className="header-menu" onClick={()=>{selectedPage('Setting')}}>Settings </span>
+            <span className="header-menu" onClick={()=>{selectedPage('Reducer')}}>Reducer </span>
             <span className="header-menu">logout </span>
         </div>
     )
