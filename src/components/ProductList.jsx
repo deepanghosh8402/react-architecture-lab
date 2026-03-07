@@ -5,7 +5,6 @@ export default function ProductList(props) {
     const GetProductList = React.memo(({ pro=[], filterQuery="" }) => {
 
         const visibleProducts = useMemo(() => {
-            console.log("Running expensive filter operation...");
             return pro.filter(product =>
                 product.name.toLowerCase().includes(filterQuery.toLowerCase())
             );
