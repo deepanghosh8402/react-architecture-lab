@@ -12,6 +12,7 @@ import Reducer from './pages/Reducer'
 import ReduxCounter from './pages/ReduxCounter'
 import ReduxThunk from './pages/ReduxThunk'
 import RamadaPage from './pages/RamadaPage'
+import UsersPage from './features/users/UserPage'
 function App() {
 
   const [currentPage, setPage] = useState('home')
@@ -27,6 +28,7 @@ function App() {
       case "Redux": return <ReduxCounter />
       case "ReduxThunk": return <ReduxThunk />
       case "Ramda": return <RamadaPage />
+      case "Saga": return <UsersPage />
       default: return <HomePage />;
     }
   };
